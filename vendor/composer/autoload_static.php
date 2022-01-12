@@ -26,6 +26,10 @@ class ComposerStaticInit574f48555f95b4bb67e316d8383ab4c6
         array (
             'voku\\' => 5,
         ),
+        'd' => 
+        array (
+            'dekor\\' => 6,
+        ),
         'V' => 
         array (
             'VismaApp\\' => 9,
@@ -73,6 +77,10 @@ class ComposerStaticInit574f48555f95b4bb67e316d8383ab4c6
         'voku\\' => 
         array (
             0 => __DIR__ . '/..' . '/voku/portable-ascii/src/voku',
+        ),
+        'dekor\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/dekor/php-array-table/src',
         ),
         'VismaApp\\' => 
         array (
@@ -181,6 +189,7 @@ class ComposerStaticInit574f48555f95b4bb67e316d8383ab4c6
         'VismaApp\\Src\\Controllers\\ServiceController' => __DIR__ . '/../..' . '/src/Controllers/ServiceController.php',
         'VismaApp\\Src\\Models\\Service' => __DIR__ . '/../..' . '/src/Models/Service.php',
         'VismaApp\\Src\\Services\\CommandService' => __DIR__ . '/../..' . '/src/Services/CommandService.php',
+        'VismaApp\\Src\\Services\\PrintService' => __DIR__ . '/../..' . '/src/Services/PrintService.php',
         'VismaApp\\Src\\Services\\ValidationService' => __DIR__ . '/../..' . '/src/Services/ValidationService.php',
     );
 

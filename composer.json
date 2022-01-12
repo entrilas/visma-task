@@ -1,7 +1,8 @@
 {
     "require": {
         "illuminate/database": "^8.78",
-        "illuminate/events": "^8.78"
+        "illuminate/events": "^8.78",
+        "dekor/php-array-table": "^1.0"
     },
     "autoload": {
         "classmap": [

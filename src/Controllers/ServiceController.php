@@ -4,15 +4,18 @@ namespace VismaApp\Src\Controllers;
 
 use Exception;
 use VismaApp\Src\Models\Service;
+use VismaApp\Src\Services\PrintService;
 use VismaApp\Src\Services\ValidationService;
 
 class ServiceController
 {
     private $validationService;
+    private $printService;
 
     public function __construct()
     {
         $this->validationService = new ValidationService();
+        $this->printService = new PrintService();
     }
 
     public function store($arguments){
@@ -43,7 +46,8 @@ class ServiceController
 
     public function show($date){
         try{
-            print_r(Service::all());
+            $data = Service::all()->where('date', '=', $date)->toArray();
+            $this->printService->printTable($data);
         }catch(Exception $error){
             throw new $error->getMessage();
         }

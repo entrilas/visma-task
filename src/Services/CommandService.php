@@ -20,7 +20,7 @@ class CommandService
         $this->serviceController = new ServiceController();
     }
     
-    public function runCommand($command, $arguments, $id){
+    public function runCommand($command, $arguments, $id, $date){
         switch ($command) {
             case self::CREATE_COMMAND_NAME:
                 $this->runCreateCommand($arguments);
@@ -32,7 +32,7 @@ class CommandService
                 $this->runDeleteCommand($id);
                 break;
             case self::PRINT_COMMAND_NAME:
-                $this->runPrintCommand($arguments);
+                $this->runPrintCommand($date);
                 break;
             case self::DELETE_COMMAND_NAME:
                 $this->runMigrateCommand($command);
@@ -54,11 +54,11 @@ class CommandService
         $this->serviceController->delete($id);
     }
 
-    public function runPrintCommand($arguments){
-        
+    public function runPrintCommand($date){
+        $this->serviceController->show($date);
     }
 
-    public function runMigrateCommand($command){
+    public function runMigrateCommand(){
         require_once('src/db/migrations/Service.php');
     }
 }
