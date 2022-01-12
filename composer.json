@@ -1,0 +1,16 @@
+{
+    "require": {
+        "illuminate/database": "^8.78",
+        "illuminate/events": "^8.78"
+    },
+    "autoload": {
+        "classmap": [
+            "src"
+        ],
+        "psr-4": 
+        {
+            "VismaApp\\": "src/"
+        }
+    }
+    
+}
