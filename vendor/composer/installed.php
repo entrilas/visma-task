@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '69cdc2534013a4461dffc853ee6a051e880fb5aa',
+        'reference' => 'aa9047ee9ea267d13213cd4831b440c999cd8aed',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '69cdc2534013a4461dffc853ee6a051e880fb5aa',
+            'reference' => 'aa9047ee9ea267d13213cd4831b440c999cd8aed',
             'dev_requirement' => false,
         ),
         'dekor/php-array-table' => array(

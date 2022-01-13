@@ -36,25 +36,28 @@ Before using program user should create local database (MySQL database is used i
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Possible commands:
-
-[create,
-edit,
-delete,
-print,
-migrate]
+Commands:
+ ```
+create
+edit
+delete
+print
+import
+migrate
+ ```
 
 Arguments:
-
+  ```
 command (create, edit, delete, print, migrate, import)
 export (true, false)
 name
-email
-phone_number
+email (must be valid email address)
+phone_number (between 9 and 4 digits, only numbers)
 apartment_address
 date ({year}-{month}-{day})
 time ({13:15})
-
+file (file directory)
+  ```
 
 * create (example)
   ```
@@ -74,8 +77,8 @@ time ({13:15})
 * print (example)
   if export==true data is printed to file(export.csv), otherwise its printed to console.
   ```
-  php index.php --command='print' --export='true' --date='2011-01-01'
-  php index.php --command='print' --export='false' --date='2011-01-01'
+  php index.php --command='print' --export='true' --date='2012-01-01'
+  php index.php --command='print' --export='false' --date='2012-01-01'
   ```
 
 * migrate (example)
@@ -84,8 +87,9 @@ time ({13:15})
   ```
 
 * import (example)
+  import.csv file is provided in repository under resources folder.
   ```
-  php index.php --command='import' --file='import.csv'
+  php index.php --command='import' --file='src/resources/import.csv'
   ```
 
 

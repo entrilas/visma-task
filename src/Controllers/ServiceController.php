@@ -23,10 +23,14 @@ class ServiceController
 
     public function store($arguments){
         try{
-            $this->validationService->validateAll($arguments['email'], $arguments['phone_number'], $arguments['date']);
+            $this->validationService->validateRequired($arguments);
+            $name = $arguments['email'] ?? null;
+            $phone_number = $arguments['phone_number'] ?? null;
+            $date = $arguments['date'] ?? null;
+            $this->validationService->validateAll($name,$phone_number, $date);
             Service::Create($arguments);
         }catch(Exception $error){
-            throw new $error->getMessage();
+            echo "Service has not been stored, reason:".$error->getMessage();
         }
     }
 
@@ -36,38 +40,36 @@ class ServiceController
             foreach($services as $service)
                 $this->store($service);
         }catch(Exception $error){
-            throw new $error->getMessage();
+            echo "Services has not been imported, reason:".$error->getMessage();
         }
     }
 
     public function update($id, $arguments){
         try{
-            $service = Service::find($id);
-            $this->validationService->validateAll($arguments['email'], $arguments['phone_number'], $arguments['date']);
+            $service = Service::findOrFail($id);
             $service->update($arguments);
         }catch(Exception $error){
-            throw new $error->getMessage();
+            echo "Service has not been updated, reason:".$error->getMessage();
         }
     }
 
     public function delete($id){
         try{
-            Service::find($id)->delete();
+            Service::findOrFail($id)->delete();
         }catch(Exception $error){
-            throw new $error->getMessage();
+            echo "Service has not been deleted, reason:".$error->getMessage();
         }
     }
 
     public function show($date, $export){
         try{
             $data = Service::all()->where('date', '=', $date)->toArray();
-            print_r($export);
             if(!$export)
                 $this->printService->printTable($data);
             else
                 $this->printService->exportTable($data);
         }catch(Exception $error){
-            throw new $error->getMessage();
+            echo "Services has not been printed/exported, reason:".$error->getMessage();
         }
     }
 }

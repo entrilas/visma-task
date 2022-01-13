@@ -2,19 +2,12 @@
 
 namespace VismaApp\Src\Services;
 
+use Constants;
 use Exception;
 use VismaApp\Src\Controllers\ServiceController;
 
 class CommandService
 {
-    const CREATE_COMMAND_NAME = "create";
-    const EDIT_COMMAND_NAME = "edit";
-    const DELETE_COMMAND_NAME = "delete";
-    const PRINT_COMMAND_NAME = "print";
-    const MIGRATE_COMMAND_NAME = "migrate";
-    const EXPORT_COMMAND_NAME = "export";
-    const IMPORT_COMMAND_NAME = "import";
-
     private $serviceController;
 
     public function __construct()
@@ -24,22 +17,22 @@ class CommandService
     
     public function runCommand($command, $arguments, $id, $date, $export, $file){
         switch ($command) {
-            case self::CREATE_COMMAND_NAME:
+            case Constants::CREATE_COMMAND_NAME:
                 $this->runCreateCommand($arguments);
                 break;
-            case self::EDIT_COMMAND_NAME:
+            case Constants::EDIT_COMMAND_NAME:
                 $this->runEditCommand($arguments, $id);
                 break;
-            case self::DELETE_COMMAND_NAME:
+            case Constants::DELETE_COMMAND_NAME:
                 $this->runDeleteCommand($id);
                 break;
-            case self::PRINT_COMMAND_NAME:
+            case Constants::PRINT_COMMAND_NAME:
                 $this->runPrintCommand($date, $export);
                 break;
-            case self::MIGRATE_COMMAND_NAME:
+            case Constants::MIGRATE_COMMAND_NAME:
                 $this->runMigrateCommand();
                 break;
-            case self::IMPORT_COMMAND_NAME:
+            case Constants::IMPORT_COMMAND_NAME:
                 $this->runImportCommand($file);
                  break;
             default:

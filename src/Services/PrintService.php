@@ -2,6 +2,7 @@
 
 namespace VismaApp\Src\Services;
 
+use Constants;
 use dekor\ArrayToTextTable;
 
 class PrintService
@@ -11,7 +12,7 @@ class PrintService
     }
 
     public function exportTable($array){
-        $fp = fopen('export.csv', 'wb');
+        $fp = fopen(Constants::EXPORT_FILE_DIR.Constants::EXPORT_FILE_NAME, 'wb');
 
         foreach ($array as $fields) {
             fputcsv($fp, $fields);

@@ -2,6 +2,7 @@
 
 namespace VismaApp\Src\Services;
 
+use DateTime;
 use Exception;
 
 class ValidationService
@@ -11,9 +12,9 @@ class ValidationService
     
     public function validateAll($email, $number, $date)
     {
-        $this->validateEmail($email);
-        //$this->validateNumber($number);
-        $this->validateDate($date);
+        (empty($email)) ?: $this->validateEmail($email);
+        (empty($number)) ?: $this->validateNumber($number);
+        (empty($date)) ?: $this->validateDate($date);
     }
 
     public function validateEmail($email){
@@ -29,14 +30,26 @@ class ValidationService
     }
 
     public function validateDate($date){
-        $date_split  = explode('-', $date);
-        if(!checkdate($date_split[2], $date_split[1], $date_split[0])){
+        if(!$this->isDate($date)){
             throw new Exception('Incorrect Date Format.');
         }
     }
 
+    public function validateRequired($arguments)
+    {
+        if(empty($arguments['name']) || empty($arguments['email']) || empty($arguments['phone_number'])
+        || empty($arguments['apartment_address']) || empty($arguments['date']) || empty($arguments['time']))
+            throw new Exception('Argument count must be 6 (Name, Email, Phone Number, Apartment Address, Date, Time)');
+    }
+
     function isDigits(string $s, int $minDigits = 9, int $maxDigits = 14): bool {
         return preg_match('/^[0-9]{'.$minDigits.','.$maxDigits.'}\z/', $s);
+    }
+
+    function isDate($date, $format = 'Y-m-d')
+    {
+        $d = DateTime::createFromFormat($format, $date);
+        return $d && $d->format($format) == $date;
     }
 }
 ?>

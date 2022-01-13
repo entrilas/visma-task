@@ -6,12 +6,24 @@ require "./src/db/database.php";
 
 $commandService = new CommandService();
 
-$arguments = getopt(null, ["name:","email:","phone_number:","apartment_address:","date:","time:"]);
-$command = getopt(null, ["command:"]);
-$date = getopt(null, ["date:"]);
-$id = getopt(null, ["id:"]);
-$exp = getopt(null, ["export:"]);
-$file = getopt(null, ["file:"]);
-$export = strtolower($exp['export']) == 'true' ? true : false;
+$options = array(
+    "name:",
+    "email:",
+    "phone_number:",
+    "apartment_address:",
+    "date:",
+    "time:",
+    "command:",
+    "export:",
+    "file:",
+    "id:"
+);
 
-$commandService->runCommand($command['command'], $arguments, $id['id'], $date['date'], $export, $file['file']);
+$data = getopt(null, $options);
+$date = $data['date'] ?? null;
+$id = $data['id'] ?? null;
+$export = strtolower($data['export'] ?? null) == 'true' ? true : false;
+$file = $data['file'] ?? null;
+$command = $data['command'] ?? null;
+
+$commandService->runCommand($command, $data, $id, $date, $export, $file);
