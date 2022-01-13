@@ -10,10 +10,14 @@ class ValidationService
     public function __construct(){
     }
     
-    public function validateAll($email, $number, $date)
+    public function validateAll($arguments)
     {
+        $email = $arguments['email'] ?? null;
+        $phone_number = $arguments['phone_number'] ?? null;
+        $date = $arguments['date'] ?? null;
+
         (empty($email)) ?: $this->validateEmail($email);
-        (empty($number)) ?: $this->validateNumber($number);
+        (empty($phone_number)) ?: $this->validateNumber($phone_number);
         (empty($date)) ?: $this->validateDate($date);
     }
 
