@@ -16,6 +16,7 @@ return array(
     'VismaApp\\Src\\Controllers\\ServiceController' => $baseDir . '/src/Controllers/ServiceController.php',
     'VismaApp\\Src\\Models\\Service' => $baseDir . '/src/Models/Service.php',
     'VismaApp\\Src\\Services\\CommandService' => $baseDir . '/src/Services/CommandService.php',
+    'VismaApp\\Src\\Services\\FileReaderService' => $baseDir . '/src/Services/FileReaderService.php',
     'VismaApp\\Src\\Services\\PrintService' => $baseDir . '/src/Services/PrintService.php',
     'VismaApp\\Src\\Services\\ValidationService' => $baseDir . '/src/Services/ValidationService.php',
 );

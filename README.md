@@ -44,6 +44,18 @@ delete,
 print,
 migrate]
 
+Arguments:
+
+command (create, edit, delete, print, migrate, import)
+export (true, false)
+name
+email
+phone_number
+apartment_address
+date ({year}-{month}-{day})
+time ({13:15})
+
+
 * create (example)
   ```
   php index.php --command='create' --name='Arnas' --email='testmail@mail.com' --phone_number='86543453212' --apartment_address='Street g. 3' --date='2011-	01-01' --time='13:15'
@@ -69,6 +81,11 @@ migrate]
 * migrate (example)
   ```
   php index.php --command='migrate'
+  ```
+
+* import (example)
+  ```
+  php index.php --command='import' --file='import.csv'
   ```
 
 

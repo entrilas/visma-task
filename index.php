@@ -11,6 +11,7 @@ $command = getopt(null, ["command:"]);
 $date = getopt(null, ["date:"]);
 $id = getopt(null, ["id:"]);
 $exp = getopt(null, ["export:"]);
+$file = getopt(null, ["file:"]);
 $export = strtolower($exp['export']) == 'true' ? true : false;
 
-$commandService->runCommand($command['command'], $arguments, $id['id'], $date['date'], $export);
+$commandService->runCommand($command['command'], $arguments, $id['id'], $date['date'], $export, $file['file']);

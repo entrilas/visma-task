@@ -189,6 +189,7 @@ class ComposerStaticInit574f48555f95b4bb67e316d8383ab4c6
         'VismaApp\\Src\\Controllers\\ServiceController' => __DIR__ . '/../..' . '/src/Controllers/ServiceController.php',
         'VismaApp\\Src\\Models\\Service' => __DIR__ . '/../..' . '/src/Models/Service.php',
         'VismaApp\\Src\\Services\\CommandService' => __DIR__ . '/../..' . '/src/Services/CommandService.php',
+        'VismaApp\\Src\\Services\\FileReaderService' => __DIR__ . '/../..' . '/src/Services/FileReaderService.php',
         'VismaApp\\Src\\Services\\PrintService' => __DIR__ . '/../..' . '/src/Services/PrintService.php',
         'VismaApp\\Src\\Services\\ValidationService' => __DIR__ . '/../..' . '/src/Services/ValidationService.php',
     );

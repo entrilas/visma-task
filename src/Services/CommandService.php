@@ -13,6 +13,7 @@ class CommandService
     const PRINT_COMMAND_NAME = "print";
     const MIGRATE_COMMAND_NAME = "migrate";
     const EXPORT_COMMAND_NAME = "export";
+    const IMPORT_COMMAND_NAME = "import";
 
     private $serviceController;
 
@@ -21,7 +22,7 @@ class CommandService
         $this->serviceController = new ServiceController();
     }
     
-    public function runCommand($command, $arguments, $id, $date, $export){
+    public function runCommand($command, $arguments, $id, $date, $export, $file){
         switch ($command) {
             case self::CREATE_COMMAND_NAME:
                 $this->runCreateCommand($arguments);
@@ -35,9 +36,12 @@ class CommandService
             case self::PRINT_COMMAND_NAME:
                 $this->runPrintCommand($date, $export);
                 break;
-            case self::DELETE_COMMAND_NAME:
-                $this->runMigrateCommand($command);
+            case self::MIGRATE_COMMAND_NAME:
+                $this->runMigrateCommand();
                 break;
+            case self::IMPORT_COMMAND_NAME:
+                $this->runImportCommand($file);
+                 break;
             default:
                 throw new Exception("Command does not exist!");
         }
@@ -57,6 +61,10 @@ class CommandService
 
     public function runPrintCommand($date, $export){
         $this->serviceController->show($date, $export);
+    }
+
+    public function runImportCommand($file){
+        $this->serviceController->import($file);
     }
 
     public function runMigrateCommand(){
