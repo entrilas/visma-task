@@ -24,10 +24,10 @@ class ServiceController
     public function store($arguments){
         try{
             $this->validationService->validateRequired($arguments);
-            $name = $arguments['email'] ?? null;
+            $email = $arguments['email'] ?? null;
             $phone_number = $arguments['phone_number'] ?? null;
             $date = $arguments['date'] ?? null;
-            $this->validationService->validateAll($name,$phone_number, $date);
+            $this->validationService->validateAll($email, $phone_number, $date);
             Service::Create($arguments);
         }catch(Exception $error){
             echo "Service has not been stored, reason:".$error->getMessage();
@@ -46,6 +46,10 @@ class ServiceController
 
     public function update($id, $arguments){
         try{
+            $email = $arguments['email'] ?? null;
+            $phone_number = $arguments['phone_number'] ?? null;
+            $date = $arguments['date'] ?? null;
+            $this->validationService->validateAll($email, $phone_number, $date);
             $service = Service::findOrFail($id);
             $service->update($arguments);
         }catch(Exception $error){
