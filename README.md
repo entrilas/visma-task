@@ -26,8 +26,8 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-Before using program user should create local database (MySQL) with name "visma" and run this migration command in the shell, while being in the project folder:
-* npm
+Before using program user should create local database (MySQL database is used in the project) with name "visma" and run this migration command in the shell to create table, while being in the project folder:
+* migrate
   ```
   php index.php --command='migrate'
   ```
@@ -38,33 +38,35 @@ Before using program user should create local database (MySQL) with name "visma"
 
 Possible commands:
 
-*create
-*edit
-*delete
-*print
-*migrate
+[create,
+edit,
+delete,
+print,
+migrate]
 
-* create
+* create (example)
   ```
   php index.php --command='create' --name='Arnas' --email='testmail@mail.com' --phone_number='86543453212' --apartment_address='Street g. 3' --date='2011-	01-01' --time='13:15'
   ```
 
-* edit
+* edit (example)
   ```
   php index.php --command='edit' --id='2' --name='John' 
   ```
 
-* delete
+* delete (example)
   ```
   php index.php --command='delete' --id='1'
   ```
 
-* print
+* print (example)
+  if export==true data is printed to file(export.csv), otherwise its printed to console.
   ```
-  php index.php --command='print' --date='2011-01-01'
+  php index.php --command='print' --export='true' --date='2011-01-01'
+  php index.php --command='print' --export='false' --date='2011-01-01'
   ```
 
-* migrate
+* migrate (example)
   ```
   php index.php --command='migrate'
   ```

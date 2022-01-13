@@ -44,10 +44,14 @@ class ServiceController
         }
     }
 
-    public function show($date){
+    public function show($date, $export){
         try{
             $data = Service::all()->where('date', '=', $date)->toArray();
-            $this->printService->printTable($data);
+            print_r($export);
+            if(!$export)
+                $this->printService->printTable($data);
+            else
+                $this->printService->exportTable($data);
         }catch(Exception $error){
             throw new $error->getMessage();
         }

@@ -12,6 +12,7 @@ class CommandService
     const DELETE_COMMAND_NAME = "delete";
     const PRINT_COMMAND_NAME = "print";
     const MIGRATE_COMMAND_NAME = "migrate";
+    const EXPORT_COMMAND_NAME = "export";
 
     private $serviceController;
 
@@ -20,7 +21,7 @@ class CommandService
         $this->serviceController = new ServiceController();
     }
     
-    public function runCommand($command, $arguments, $id, $date){
+    public function runCommand($command, $arguments, $id, $date, $export){
         switch ($command) {
             case self::CREATE_COMMAND_NAME:
                 $this->runCreateCommand($arguments);
@@ -32,7 +33,7 @@ class CommandService
                 $this->runDeleteCommand($id);
                 break;
             case self::PRINT_COMMAND_NAME:
-                $this->runPrintCommand($date);
+                $this->runPrintCommand($date, $export);
                 break;
             case self::DELETE_COMMAND_NAME:
                 $this->runMigrateCommand($command);
@@ -54,8 +55,8 @@ class CommandService
         $this->serviceController->delete($id);
     }
 
-    public function runPrintCommand($date){
-        $this->serviceController->show($date);
+    public function runPrintCommand($date, $export){
+        $this->serviceController->show($date, $export);
     }
 
     public function runMigrateCommand(){
