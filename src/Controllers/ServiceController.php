@@ -61,7 +61,7 @@ class ServiceController
 
     public function show($date, $export){
         try{
-            $data = Service::all()->where('date', '=', $date)->toArray();
+            $data = Service::all()->where('date', '=', $date)->sortBy("time")->toArray();
             if(!$export)
                 $this->printService->printTable($data);
             else
